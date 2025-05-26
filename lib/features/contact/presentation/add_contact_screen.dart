@@ -10,7 +10,6 @@ import 'package:local_telephone_dairy/features/contact/infrastructure/contact_re
 import 'package:local_telephone_dairy/features/contact/presentation/widgets/add_contact_form.dart';
 
 class AddContactScreen extends StatelessWidget {
-  static String routeName = 'Contact Screen';
 
   const AddContactScreen({super.key});
 

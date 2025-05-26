@@ -18,7 +18,7 @@ class EditProfileForm extends StatefulWidget {
   State<EditProfileForm> createState() => _EditProfileFormState();
 }
 
-final formKey = GlobalKey<FormState>();
+final _editFormKey = GlobalKey<FormState>();
 
 class _EditProfileFormState extends State<EditProfileForm> {
   late final TextEditingController emailController;
@@ -74,7 +74,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Form(
-                  key: formKey,
+                  key: _editFormKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -180,7 +180,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
   }
 
   void _updateProfileHandler() {
-    if (formKey.currentState!.validate()) {
+    if (_editFormKey.currentState!.validate()) {
       final email = emailController.text.trim();
       final name = nameController.text.trim();
       final location = _selectedLocation ?? '';

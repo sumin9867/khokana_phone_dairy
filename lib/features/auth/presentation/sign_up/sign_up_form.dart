@@ -25,7 +25,7 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  final formKey = GlobalKey<FormState>();
+  final _wformKey = GlobalKey<FormState>();
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   late final TextEditingController nameController;
@@ -92,7 +92,7 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Form(
-              key: formKey,
+              key: _wformKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -223,7 +223,7 @@ class _SignUpFormState extends State<SignUpForm> {
   }
 
   void signUpHandler() {
-    if (formKey.currentState!.validate()) {
+    if (_wformKey.currentState!.validate()) {
       final email = emailController.text.trim();
       final name = nameController.text.trim();
       final location = locationController.text.trim();

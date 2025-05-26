@@ -27,13 +27,13 @@ class _FormContainer extends StatefulWidget {
 }
 
 class __FormContainerState extends State<_FormContainer> {
-  final _formKey = GlobalKey<FormBuilderState>();
+  final _addContactFormKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: FormBuilder(
-        key: _formKey,
+        key: _addContactFormKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -173,8 +173,8 @@ class __FormContainerState extends State<_FormContainer> {
               const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.saveAndValidate()) {
-                    final formData = _formKey.currentState!.value;
+                  if (_addContactFormKey.currentState!.saveAndValidate()) {
+                    final formData = _addContactFormKey.currentState!.value;
 
                     final contact = ContactEntities(
                         name: formData['name'],

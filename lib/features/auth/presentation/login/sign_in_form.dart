@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:local_telephone_dairy/core/presentation/app_router.dart';
 import 'package:local_telephone_dairy/core/presentation/scaffold_with_bottom_navbar.dart';
 import 'package:local_telephone_dairy/core/theme/app_color.dart';
 import 'package:local_telephone_dairy/features/auth/application/login_cubit/login_cubit.dart';
@@ -15,7 +17,6 @@ import 'package:local_telephone_dairy/features/contact/presentation/contact_scre
 
 
 class SignInForm extends StatefulWidget {
-    static String routeName = 'SignIn Screen';
   const SignInForm({super.key});
 
   @override
@@ -23,7 +24,7 @@ class SignInForm extends StatefulWidget {
 }
 
 class _SignInFormState extends State<SignInForm> {
-  final formKey = GlobalKey<FormState>();
+  final _signinformKey = GlobalKey<FormState>();
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
 
@@ -50,11 +51,7 @@ class _SignInFormState extends State<SignInForm> {
         log("print state $state");
         if (state is LoginAuthenicated) {
               log("Navigating to the next screen...");
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) =>  const ScaffoldWithBottomNavbar(child: ContactScreen(),)
-            ),
-          );
+         context.push(AppRoutes.bottomNav);
         
         } else if (state is LoginError) {
           showDialog(
@@ -83,7 +80,7 @@ class _SignInFormState extends State<SignInForm> {
               horizontal: MediaQuery.of(context).size.height * .02,
             ),
             child: Form(
-              key: formKey,
+              key: _signinformKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -177,7 +174,7 @@ class _SignInFormState extends State<SignInForm> {
   }
 
   void signInHandler() {
-    if (formKey.currentState!.validate()) {
+    if (_signinformKey.currentState!.validate()) {
       final email = emailController.text.trim();
       final password = passwordController.text.trim();
       final hashpassword = sha256.convert(utf8.encode(password)).toString();

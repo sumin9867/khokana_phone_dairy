@@ -5,7 +5,7 @@ import 'package:local_telephone_dairy/features/updates/presentation/widgets/news
 import 'package:local_telephone_dairy/features/updates/presentation/widgets/news_trending_news.dart';
 
 class NewsScreen extends StatelessWidget {
-  static String routeName = 'NewsScreen';
+
 
   const NewsScreen({super.key});
 

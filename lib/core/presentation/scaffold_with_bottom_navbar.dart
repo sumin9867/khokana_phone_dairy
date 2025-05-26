@@ -4,6 +4,7 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:local_telephone_dairy/core/theme/app_color.dart';
 import 'package:local_telephone_dairy/features/contact/presentation/add_contact_screen.dart';
 import 'package:local_telephone_dairy/features/contact/presentation/contact_screen.dart';
+import 'package:local_telephone_dairy/features/home/presentation/home_screen.dart';
 import 'package:local_telephone_dairy/features/updates/presentation/news_screen.dart';
 import 'package:local_telephone_dairy/features/profile/presentation/profile_screen.dart';
 
@@ -21,9 +22,10 @@ class _ScaffoldWithBottomNavbarState extends State<ScaffoldWithBottomNavbar> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
+    const HomeScreen(),
     const ContactScreen(),
-    const AddContactScreen(),
-    const NewsScreen(),
+    const ContactScreen(),
+
     const ProfileScreen(),
   ];
 
@@ -49,27 +51,30 @@ class _ScaffoldWithBottomNavbarState extends State<ScaffoldWithBottomNavbar> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 16),
             child: GNav(
+              curve: Curves.easeIn,
+
               rippleColor: Colors.grey[300]!,
               hoverColor: Colors.grey[100]!,
               gap: 8,
               activeColor: Colors.white,
               iconSize: 18,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              duration: const Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 600),
               tabBackgroundColor: AppColor.error,
               color: Colors.black,
               tabs: const [
+                 
+                GButton(
+                  icon: IconsaxPlusLinear.home,
+                  text: "Home",
+                ),
                 GButton(
                   icon: IconsaxPlusLinear.mobile,
                   text: "Contact",
                 ),
                 GButton(
-                  icon: IconsaxPlusLinear.add_circle,
-                  text: "Add",
-                ),
-                GButton(
-                  icon: IconsaxPlusLinear.information,
-                  text: "Updates",
+                  icon: IconsaxPlusLinear.heart,
+                  text: "Favourite",
                 ),
                 GButton(
                   icon: IconsaxPlusLinear.profile,
